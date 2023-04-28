@@ -21,8 +21,6 @@ public class MovieController {
         movieService.addMovie(movie);
         return new ResponseEntity("success", HttpStatus.CREATED);
     }
-// mai kya kru kuch smjh n aarha hai
-
 
 
     @PostMapping("/add-director")
