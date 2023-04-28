@@ -26,6 +26,7 @@ public class MovieController {
     public ResponseEntity addDirector(@RequestBody Director director) {
         movieService.addDirector(director);
         return new ResponseEntity("success", HttpStatus.CREATED);
+
     }
 
     @PostMapping("/add-movie-director-pair")
