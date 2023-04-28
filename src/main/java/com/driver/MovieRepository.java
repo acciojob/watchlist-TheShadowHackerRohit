@@ -1,35 +1,30 @@
 package com.driver;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+//import com.driver.model.Movie;
+import org.springframework.stereotype.Repository;
 
+import java.util.*;
+
+@Repository
 public class MovieRepository {
 
-    Map<String,Movie> movieData = new HashMap<>();
-
-    //My watchlist that aren’t mapped to any of the director.
-
-    Movie movie1 = new Movie("Raazi",138,7.7);
-    Movie movie2 = new Movie("Barfi",151,8.1);
-    Movie movie3 = new Movie("Queen",146,9.1);
-
-    public boolean addMovie(Movie movie) {
-        movieData.put(movie.getName(), movie);
-        return  true;
+    Map<String,Movie> repo = new HashMap<>();
+    public void add(Movie movie) {
+        repo.put(movie.getName(), movie);
     }
 
-    public Movie getMovieByName(String name) {
-        return movieData.get(name);
+    public Optional<Movie> getByName(String name) {
+        if(repo.containsKey(name))
+            return Optional.of(repo.get(name));
+        return Optional.empty();
+
     }
 
-    public List<String> getAllMovies() {
-        List<String> moviesList = new ArrayList<>(movieData.keySet());
-        return moviesList;
+    public List<Movie> getAll() {
+        return new ArrayList<>(repo.values());
     }
-    public boolean deleteMovie(Movie movie){
-        movieData.remove(movie);
-        return true;
+
+    public void remove(String movie) {
+        repo.remove(movie);
     }
 }
