@@ -23,6 +23,8 @@ public class MovieController {
     }
 // mai kya kru kuch smjh n aarha hai
 
+
+
     @PostMapping("/add-director")
     public ResponseEntity addDirector(@RequestBody Director director) {
         movieService.addDirector(director);
